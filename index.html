@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Islane Santos">
+    <title>B.I.M.Y.T</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo base */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
+            color: #1a237e;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        /* Efeito de células/virus */
+        .virus {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.8;
+            background-size: cover;
+            pointer-events: none; /* Para que não interfira na interação do usuário */
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(calc(100vw - 50px), calc(100vh - 50px));
+            }
+        }
+
+        /* Cabeçalho */
+        .cabecalho {
+            background-color: #0d47a1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .cabecalho img {
+            width: 60px;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        .cabecalho img:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        #bimyt {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #bimyt p {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+
+        /* Navegação */
+        .navbar {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            background-color: #1976d2;
+            transform: scale(1.05);
+        }
+
+        .navbar a.active {
+            background-color: #ffd700;
+            color: #0c2886;
+        }
+
+        /* Conteúdo principal */
+        .conteudo {
+            padding: 20px;
+            max-width: 800px; /* Limita a largura das seções */
+            margin: 20px auto; /* Centraliza e adiciona espaço acima e abaixo */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            transition: transform 0.3s;
+            position: relative;
+            z-index: 1;
+            text-align: center; /* Centraliza o texto dentro da seção */
+        }
+
+        .conteudo:hover {
+            transform: translateY(-5px);
+        }
+
+        .conteudo img,
+        .conteudo video {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius : 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .conteudo h2 {
+            margin: 30px 0;
+            color: #0d47a1;
+        }
+
+        .conteudo p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Seções coloridas */
+        .seção {
+            margin: 50px 0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .seção#imagens {
+            background-color: #e1f5fe;
+        }
+
+        .seção#videos {
+            background-color: #e0f7fa;
+        }
+
+        .seção#textos {
+            background-color: #fff3e0;
+        }
+
+        /* Rodapé */
+        .topo2 {
+            background-color: #0d47a1;
+            height: 10px;
+            margin-top: 50px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            #bimyt p {
+                font-size: 20px;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .conteudo {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Efeito de células/virus -->
+    <div class="virus" style="width: 50px; height: 50px; top: 10%; left: 10%; background-image: url('virus1.png'); animation-duration: 8s;"></div>
+    <div class="virus" style="width: 30px; height: 30px; top: 20%; left: 30%; background-image: url('virus2.png'); animation-duration: 12s;"></div>
+    <div class="virus" style="width: 40px; height: 40px; top: 50%; left: 50%; background-image: url('virus3.png'); animation-duration: 10s;"></div>
+    <div class="virus" style="width: 60px; height: 60px; top: 70%; left: 20%; background-image: url('virus4.png'); animation-duration: 15s;"></div>
+    <div class="virus" style="width: 20px; height: 20px; top: 80%; left: 80%; background-image: url('virus5.png'); animation-duration: 9s;"></div>
+
+    <!-- Cabeçalho com Home e Navigation Bar -->
+    <div class="cabecalho">
+        <img src="morcego.png" alt="Logo Morcego">
+        <div id="bimyt">
+            <p>B.I.M.Y.T</p>
+        </div>
+        <ul class="navbar">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#textos">Textos</a></li>
+            <li><a href="#imagens">Imagens</a></li>
+            <li><a href="#videos">Vídeos</a></li>
+        </ul>
+    </div>
+
+    <!-- Seção Home -->
+    <div id="home" class="conteudo">
+        <h2>Site feito pelo grupo B.I.M.Y.T</h2>
+        <p>
+            Aqui você vai poder ter uma maior interação com o conteúdo de nossa apresentação, divirta-se! :)
+        </p>
+    </div>
+
+    <!-- Seção Textos -->
+    <div id="textos" class="conteudo">
+        <h2>Mitose</h2>
+        <p>
+            • A mitose é essencial para o crescimento, desenvolvimento e reparo do organismo. Sua importância está no fato de ser o processo que permite a divisão de uma célula em duas células-filhas geneticamente idênticas, garantindo que cada nova célula receba uma cópia completa do DNA.
+        </p>
+        <h2>Profase</h2>
+        <p>
+            - Com a profase é a primeira fase da mitose e é crucial para o início do processo de divisão celular.
+        </p>
+        <h2>Condensação da cromatina</h2>
+        <p>
+            A cromatina (material genético) começa a se condensar, formando os cromossomos visíveis sob o microscópio.
+        </p>
+        <h2>Formação do fuso mitótico</h2>
+        <p>As fibras do fuso se formam a partir dos centríolos, que se movem para os polos opostos da célula.
+        </p>
+        <h2>Desintegração da membrana nuclear</h2>
+        <p>
+            A membrana que envolve o núcleo começa a se desintegrar, permitindo que os cromossomos fiquem livres na célula.
+        </p>
+        <h2>Importância da Prófase</h2>
+        <p>
+            A prófase é fundamental para garantir que a divisão celular ocorra corretamente. A condensação dos cromossomos é vital para evitar que eles se emaranhem durante a separação. Além disso, a formação adequada do fuso mitótico assegura que cada célula filha receberá uma cópia idêntica do material genético.
+        </p>
+        <h2>Metáfase</h2>
+        <p>A metáfase é a segunda fase da mitose e é um momento crucial para garantir que a divisão celular ocorra de maneira precisa e ordenada.
+
+            • Alinhamento dos cromossomos: Durante a metáfase, os cromossomos se organizam e alinham-se no plano equatorial da célula, conhecido como placa metafásica. Isso ocorre devido à ação dos microtúbulos do fuso mitótico que se ligam aos cinetócoros dos cromossomos.
+            
+            • Verificação do alinhamento: O fuso mitótico realiza uma verificação crítica para garantir que todos os cromossomos estejam corretamente alinhados e conectados aos microtúbulos. Essa verificação é fundamental para evitar erros na distribuição do material genético nas células-filhas. Se algum cromossomo não estiver corretamente posicionado, a célula pode parar o processo de divisão até que o problema seja resolvido.</p>
+   
+            <h2>Tensão nos microtúbulos</h2>
+            <p>Durante essa fase, há uma tensão equilibrada nos microtúbulos que puxam os cromossomos em direções opostas (uma para cada polo da célula). Essa tensão é essencial para garantir que, na próxima fase (anáfase), as cromátides irmãs sejam separadas de forma adequada e igualitária.</p>
+            <h2>Importância da metáfase</h2>
+            <p>A metáfase é crucial porque garante que cada célula filha receba uma cópia idêntica do material genético. Um erro nesta fase pode resultar em aneuploidia, que é uma condição onde as células possuem um número anormal de cromossomos, o que pode levar a problemas de desenvolvimento e doenças, como certos tipos de câncer.</p>
+            <h2>Anáfase</h2>
+            <p>A anáfase é a terceira fase da mitose e é um momento decisivo em que as cromátides irmãs se separam e são puxadas para os polos opostos da célula.</p>
+            <h2>Separação das cromátides irmãs</h2>
+            <p>As cromátides irmãs de cada cromossomo são puxadas para os polos opostos da célula. Isso é feito pelo encurtamento dos microtúbulos do fuso.
+            </p>
+            <h2>Alongamento da célula</h2>
+            <p>A célula começa a se alongar à medida que as cromátides se movem para os polos opostos.</p>
+            <h2>Importância da Anáfase
+            </h2>
+            <p>A Anáfase é crucial para a distribuição equitativa do material genético entre as células filhas. Qualquer tipo de erro nessa fase podem resultar em aneuploidia, afetando a saúde e o desenvolvimento.
+            </p>
+            <h2>Telófase
+            </h2>
+            <p>A telófase é a última fase da mitose, que ocorre após a anáfase.
+
+                • Reformação de membrana nuclear: Uma nova membrana nuclear se forma ao redor de cada conjunto de cromossomos nos polos opostos.
+                
+                • Descondensação dos cromossomos: Os cromossomos começam a descondensar-se novamente em cromatina, tornando-se menos visíveis.
+                
+                • Formação do nucléolo: O nucléolo reaparece dentro de cada núcleo recém-formado.
+                </p>
+            <h2>Importância da Telófase</h2>
+            <p>A telófase é crucial porque marca o fim da divisão celular, completando a separação do material genético em duas células filhas. Após essa fase a célula geralmente passa por um processo chamado citocinese, que divide o citoplasma e resultar em duas células completas.            </p>
+            <h2>Citocinese
+            </h2>
+            <p>Embora não seja uma fase da mitose em si, a citocinese é o processo final que ocorre após a telófase.
+
+                • Divisão do citoplasma: O citoplasma celular é dividido em duas partes resultando em duas células-filhas. Em células animais, isso ocorre através de um anel contrátil que aperta e divide a célula em células; em células vegetais, forma-se uma nova parede celular entre as duas células filhas.
+                
+                Essas fases trabalham em conjunto para garantir que a divisão celular ocorra de maneira ordenada e precisa.</p>
+        </div>
+
+    <!-- Seção Imagens -->
+    <div id="imagens" class="conteudo">
+        <h2>Imagens</h2>
+        <img src="mitose.png" alt="Exemplo de Imagem">
+        <p>Representação da fases da mitose.</p>
+        <img src="profase.jpg">
+        <p>Representação da prófase.</p>
+    </div>
+
+    <!-- Seção Vídeos -->
+    <div id="videos" class="conteudo">
+        <h2>Vídeo</h2>
+        <p>
+            Vídeo como complemento da mitose e meiose.
+        </p>
+        <iframe width="100%" height="315" src="https://youtu.be/p4qTpxtJS4o?si=vlwuTTxWdKTDy0EF"
+            title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="topo2"></div>
+
+    <script>
+        // Alerta interativo ao clicar na logo
+        const headerLogo = document.querySelector('.cabecalho img');
+        headerLogo.addEventListener('click', () => {
+            alert('Bem-vindo ao B.I.M.Y.T!');
+        });
+
+        // Fade-in na página
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = 0;
+            document.body.style.transition = 'opacity 2s ease';
+            document.body.style.opacity = 1;
+        });
+
+        // Função para criar células/virus aleatórias
+        function createVirus() {
+            const virus = document.createElement('div');
+            virus.classList.add('virus');
+            const size = Math.random() * 50 + 20; // Tamanho aleatório entre 20px e 70px
+            virus.style.width = `${size}px`;
+            virus.style.height = `${size}px`;
+            virus.style.top = `${Math.random() * 80}vh`; // Limita o movimento vertical
+            virus.style.left = `${Math.random() * 80}vw`; // Limita o movimento horizontal
+            virus.style.backgroundImage = "url('virus.png')"; // Imagem padrão
+            virus.style.animationDuration = `${Math.random() * 10 + 5}s`; // Duração aleatória entre 5s e 15s
+            document.body.appendChild(virus);
+        }
+
+        // Criar várias células/virus
+        for (let i = 0; i < 10; i++) {
+            createVirus();
+        }
+    </script>
+</body>
+
+</html>
